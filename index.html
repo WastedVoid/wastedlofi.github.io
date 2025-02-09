@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LoFi Cafe Popup</title>
-  <!-- Google Fonts -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LoFi Cafe</title>
+  <!-- Google Fonts for a relaxed vibe -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Link to the external CSS file -->
+  <!-- Link to external CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Button to open the popup -->
-  <button class="open-popup-btn" id="openPopup">Open Popup</button>
+  <!-- Central Logo -->
+  <div class="center-logo">
+    <img src="logo.png" alt="LoFi Cafe Logo" />
+  </div>
 
-  <!-- Popup Overlay and Box -->
-  <div class="popup-overlay" id="popupOverlay">
-    <div class="popup-box">
-      <span class="close-btn" id="closePopup">&times;</span>
-      <h2>LoFi Vibes</h2>
-      <p>
-        Enjoy our chill lo-fi beats and the cozy ambiance of your favorite café.
-      </p>
+  <!-- Container for the 4 Rounded Panels -->
+  <div class="squares-container">
+    <div class="square" id="aboutPanel">
+      <h2>About</h2>
+      <p>Discover our vibe and the story behind our beats.</p>
+    </div>
+    <div class="square" id="musicPanel">
+      <h2>Music</h2>
+      <p>Listen to our curated lo‑fi tracks.</p>
+    </div>
+    <div class="square" id="galleryPanel">
+      <h2>Gallery</h2>
+      <p>Visual inspirations and moments from our café.</p>
+    </div>
+    <div class="square" id="contactPanel">
+      <h2>Contact</h2>
+      <p>Get in touch with us for collabs or inquiries.</p>
     </div>
   </div>
 
-  <!-- Link to the external JavaScript file -->
+  <!-- Audio Player Section -->
+  <div class="player">
+    <audio id="audioPlayer" controls>
+      <!-- The first track will be loaded via script -->
+      <source id="audioSource" src="" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <div class="player-controls">
+      <button id="prevBtn">&#9664; Prev</button>
+      <button id="playPauseBtn">Play/Pause</button>
+      <button id="nextBtn">Next &#9654;</button>
+    </div>
+  </div>
+
+  <!-- Link to external JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>
