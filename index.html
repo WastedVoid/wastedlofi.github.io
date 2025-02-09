@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LoFi Cafe</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Define color variables for easy customization */
+    :root {
+      --bg-color: #f5f5dc; /* Soft beige */
+      --accent-color: #a67c52; /* Warm coffee brown */
+      --text-color: #3b3b3b; /* Dark text */
+    }
+
+    /* Global Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    /* Header Section */
+    header {
+      position: relative;
+      background-image: url('your-cafe-background.jpg'); /* Replace with your image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    /* Dark overlay for better text readability */
+    header::after {
+      content: "";
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+    header h1, header p {
+      position: relative; /* Keep text above the overlay */
+      margin: 0;
+      z-index: 1;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background-color: var(--accent-color);
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content Section */
+    section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .lofi-card {
+      background-color: #fff8e1; /* Light off-white with a hint of warmth */
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .lofi-card h2 {
+      margin-top: 0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--accent-color);
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      nav a {
+        margin: 0 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Background Image -->
+  <header>
+    <h1>LoFi Cafe</h1>
+    <p>Chill lo-fi beats to relax and study to.</p>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Music</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Main Content -->
+  <section>
+    <!-- Featured Music Card -->
+    <div class="lofi-card">
+      <h2>Featured Track</h2>
+      <p>Enjoy our latest lo-fi track curated to bring you calm vibes.</p>
+      <!-- Replace "your-track.mp3" with the path to your audio file -->
+      <audio controls>
+        <source src="your-track.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+
+    <!-- About the Channel Card -->
+    <div class="lofi-card">
+      <h2>About Our Channel</h2>
+      <p>
+        We blend the soothing sounds of lo-fi with the warm ambiance of a cozy café.
+        Whether you’re studying, working, or just relaxing, our beats are here to set the mood.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 LoFi Cafe. All rights reserved.</p>
+  </footer>
+</body>
+</html>
