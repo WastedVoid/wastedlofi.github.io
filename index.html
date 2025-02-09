@@ -1,154 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LoFi Cafe</title>
-  <!-- Google Fonts -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LoFi Cafe Popup</title>
+  <!-- Optionally include Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Define color variables for easy customization */
-    :root {
-      --bg-color: #f5f5dc; /* Soft beige */
-      --accent-color: #a67c52; /* Warm coffee brown */
-      --text-color: #3b3b3b; /* Dark text */
-    }
-
-    /* Global Styles */
-    body {
+    /* Reset */
+    * {
       margin: 0;
       padding: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
+      box-sizing: border-box;
     }
 
-    /* Header Section */
-    header {
-      position: relative;
-      background-image: url('your-cafe-background.jpg'); /* Replace with your image */
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
+    /* Base Styles */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f5f5dc; /* Soft beige background */
+      color: #3b3b3b;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
     }
-    /* Dark overlay for better text readability */
-    header::after {
-      content: "";
-      background-color: rgba(0, 0, 0, 0.4);
-      position: absolute;
+
+    /* Button to trigger popup */
+    .open-popup-btn {
+      padding: 12px 24px;
+      background: #a67c52; /* Warm coffee brown */
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .open-popup-btn:hover {
+      background: #8c6337;
+    }
+
+    /* Popup Overlay */
+    .popup-overlay {
+      display: none; /* Hidden by default */
+      position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
-    header h1, header p {
-      position: relative; /* Keep text above the overlay */
-      margin: 0;
-      z-index: 1;
+
+    /* Popup Box */
+    .popup-box {
+      background: #f5f5dc; /* Beige popup */
+      border-radius: 20px; /* Rounded corners */
+      padding: 30px 40px;
+      width: 90%;
+      max-width: 400px;
+      position: relative;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      animation: fadeIn 0.3s ease-out;
+      text-align: center;
     }
-    header h1 {
+
+    /* Close Button */
+    .popup-box .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      color: #a67c52;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .popup-box .close-btn:hover {
+      color: #8c6337;
+    }
+
+    /* Heading Styling */
+    .popup-box h2 {
       font-family: 'Great Vibes', cursive;
-      font-size: 4rem;
-      margin-bottom: 10px;
+      font-size: 2rem;
+      margin-bottom: 15px;
     }
-
-    /* Navigation Bar */
-    nav {
-      background-color: var(--accent-color);
-      padding: 10px 20px;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Main Content Section */
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: auto;
-    }
-    .lofi-card {
-      background-color: #fff8e1; /* Light off-white with a hint of warmth */
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .lofi-card h2 {
-      margin-top: 0;
-    }
-
-    /* Footer */
-    footer {
-      background-color: var(--accent-color);
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 3rem;
+    
+    /* Animation for popup appearance */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
       }
-      nav a {
-        margin: 0 10px;
+      to {
+        opacity: 1;
+        transform: scale(1);
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header with Background Image -->
-  <header>
-    <h1>LoFi Cafe</h1>
-    <p>Chill lo-fi beats to relax and study to.</p>
-  </header>
+  <!-- Button to open the popup -->
+  <button class="open-popup-btn" id="openPopup">Open Popup</button>
 
-  <!-- Navigation Bar -->
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Music</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
-
-  <!-- Main Content -->
-  <section>
-    <!-- Featured Music Card -->
-    <div class="lofi-card">
-      <h2>Featured Track</h2>
-      <p>Enjoy our latest lo-fi track curated to bring you calm vibes.</p>
-      <!-- Replace "your-track.mp3" with the path to your audio file -->
-      <audio controls>
-        <source src="your-track.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-      </audio>
-    </div>
-
-    <!-- About the Channel Card -->
-    <div class="lofi-card">
-      <h2>About Our Channel</h2>
+  <!-- Popup Overlay and Box -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <span class="close-btn" id="closePopup">&times;</span>
+      <h2>LoFi Vibes</h2>
       <p>
-        We blend the soothing sounds of lo-fi with the warm ambiance of a cozy café.
-        Whether you’re studying, working, or just relaxing, our beats are here to set the mood.
+        Enjoy our chill lofi beats and the cozy ambiance of your favorite café.
       </p>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 LoFi Cafe. All rights reserved.</p>
-  </footer>
+  <!-- JavaScript to open/close the popup -->
+  <script>
+    const openPopupBtn = document.getElementById('openPopup');
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    // Open the popup when button is clicked
+    openPopupBtn.addEventListener('click', () => {
+      popupOverlay.style.display = 'flex';
+    });
+
+    // Close the popup when the close icon is clicked
+    closePopupBtn.addEventListener('click', () => {
+      popupOverlay.style.display = 'none';
+    });
+
+    // Optionally, close the popup when clicking outside the box
+    popupOverlay.addEventListener('click', (e) => {
+      if (e.target === popupOverlay) {
+        popupOverlay.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
